@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.doodle {
+    width: 400px;
+    height: 600px;
+    position: relative;
+}
+
+.doodler {
+    width: 60px;
+    height: 85px;
+    position: absolute;
+}
+
+.platform {
+    width: 85px;
+    height: 15px;
+    background_color: green;
+    position: absolute;
+}
+
+.new-game-button {
+
+}
