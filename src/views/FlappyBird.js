@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react"
 
+const BOTTOM_HEIGHT = 150;
 const BIRD_HEIGHT = 46;
 const BIRD_WIDTH = 60;
 const GAME_WIDTH = 500;
-const GAME_HEIGHT = 500;
+const GAME_HEIGHT = 580;
 const GRAVITY = 6;
 const JUMP_HEIGHT = 100;
 const OBSTACLE_WIDTH = 62;
@@ -55,19 +56,23 @@ function FlappyBird() {
 
     useEffect(() => {
         const hasCollidedWithTopObstacle = 
-            birdPosition >= 0 && birdPosition < obstacleHeight;
+            birdPosition >= 1 && birdPosition < obstacleHeight;
         const hasCollidedWithBottomObstacle = 
-            birdPosition <= 500 && birdPosition > 500 - bottomObstacleHeight;
+            birdPosition <= 580 && birdPosition > 580 - bottomObstacleHeight;
+        const hasCollidedWithBottom = 
+            birdPosition > 535;
 
-        if (obstacleLeft >= 0 && 
+        if (hasCollidedWithBottom ||  obstacleLeft >= 0 && 
             obstacleLeft <= OBSTACLE_WIDTH && 
             (hasCollidedWithTopObstacle || hasCollidedWithBottomObstacle)
             ) {
+                console.log(birdPosition)
                 setGameHasStarted(false)
+                setBirdPosition(200)
                 alert(`Thank you for playing, your score is ${score}!`)
                 setScore(-2);
             }
-    }, [birdPosition, obstacleHeight, bottomObstacleHeight, obstacleLeft]);
+    }, [obstacleHeight, bottomObstacleHeight, obstacleLeft]);
 
 
     const handleClick = () => {
@@ -83,10 +88,10 @@ function FlappyBird() {
 
 
     return (
-        <Div >
+        <Div>
             <GameBox tabIndex="0" id="game-box" height={GAME_HEIGHT} width={GAME_WIDTH} onClick={handleClick} onKeyDown={handleClick}>
                 <Obstacle
-                    id="obstacle"
+                    id="obstacle-up"
                     top={0}
                     width={OBSTACLE_WIDTH}
                     height={obstacleHeight}
@@ -99,9 +104,17 @@ function FlappyBird() {
                     height={bottomObstacleHeight}
                     left={obstacleLeft}
                     />
-                <Bird id="flappy-bird" height={BIRD_HEIGHT} width={BIRD_WIDTH} top={birdPosition}/>
-                <span> {score} </span>
+                <Bird id="bird-image" height={BIRD_HEIGHT} width={BIRD_WIDTH} top={birdPosition}/>
+                
             </GameBox>
+            <BottomBox
+                width={GAME_WIDTH}
+                height={BOTTOM_HEIGHT}
+                id="bottom-box">
+                <p id="flappy-bird-score">
+                    {score}
+                </p>
+            </BottomBox>
         </Div>
     );
 }
@@ -113,19 +126,14 @@ const Bird = styled.div`
     height: ${(props) => props.height}px;
     width: ${(props) => props.width}px;
     top: ${(props) => props.top}px;
-    border: 1px red solid
+    border: 1px red solid;
 `;
 
 const Div = styled.div`
+height: ${(props) => props.height}px;
 display: flex:
 width: 100%;
 justify-content: center;
-& span{
-    color: white;
-    font-size: 32px;
-    font-weight: bold;
-    position: absolute;
-};
 `;
 
 const GameBox = styled.div`
@@ -140,5 +148,11 @@ const Obstacle = styled.div`
     width: ${(props) => props.width}px;
     height: ${(props) => props.height}px;
     left: ${(props) => props.left}px;
+    border: 1px red solid
+`;
+
+const BottomBox = styled.div`
+    height: ${(props) => props.height}px;
+    width: ${(props) => props.width}px;
     border: 1px red solid
 `;

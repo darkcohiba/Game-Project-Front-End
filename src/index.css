@@ -25,7 +25,9 @@
 
 }
 
-#flappy-bird {
+/* Flappy Bird Score and Image */
+
+#bird-image {
     background-image: url('./assets/flappy-bird.png');
 }
 
@@ -36,3 +38,19 @@
 #obstacle {
     background-image: url('./assets/flappybird-pipe.png');
 }
+
+#obstacle-up {
+    background-image: url('./assets/flappybird-pipe.png');
+    transform: scaleY(-1)
+}
+
+#bottom-box{
+    background-image: url('./assets/bottom-background.png')
+}
+
+#flappy-bird-score {
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 60px;
+}; 
