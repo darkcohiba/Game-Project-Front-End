@@ -24,3 +24,15 @@
 .new-game-button {
 
 }
+
+#flappy-bird {
+    background-image: url('./assets/flappy-bird.png');
+}
+
+#game-box {
+    background-image: url('./assets/fb-game-background.png');
+}
+
+#obstacle {
+    background-image: url('./assets/flappybird-pipe.png');
+}

@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react"
 
-const BIRD_SIZE = 20;
+const BIRD_HEIGHT = 46;
+const BIRD_WIDTH = 60;
 const GAME_WIDTH = 500;
 const GAME_HEIGHT = 500;
 const GRAVITY = 6;
 const JUMP_HEIGHT = 100;
-const OBSTACLE_WIDTH = 40;
+const OBSTACLE_WIDTH = 62;
 const OBSTACLE_GAP = 200;
 
 function FlappyBird() {
@@ -21,7 +22,7 @@ function FlappyBird() {
 
     useEffect(() => {
         let timeId;
-        if (gameHasStarted && birdPosition < GAME_HEIGHT - BIRD_SIZE) {
+        if (gameHasStarted && birdPosition < GAME_HEIGHT - BIRD_HEIGHT) {
             timeId = setInterval(() => {
                 setBirdPosition(birdPosition => birdPosition + GRAVITY)
             }, 24)
@@ -83,20 +84,22 @@ function FlappyBird() {
 
     return (
         <Div >
-            <GameBox tabIndex="0" height={GAME_HEIGHT} width={GAME_WIDTH} onClick={handleClick} onKeyDown={handleClick}>
+            <GameBox tabIndex="0" id="game-box" height={GAME_HEIGHT} width={GAME_WIDTH} onClick={handleClick} onKeyDown={handleClick}>
                 <Obstacle
+                    id="obstacle"
                     top={0}
                     width={OBSTACLE_WIDTH}
                     height={obstacleHeight}
                     left={obstacleLeft}
                     />
                 <Obstacle
+                    id="obstacle"
                     top={GAME_HEIGHT - (obstacleHeight + bottomObstacleHeight)}
                     width={OBSTACLE_WIDTH}
                     height={bottomObstacleHeight}
                     left={obstacleLeft}
                     />
-                <Bird size={BIRD_SIZE} top={birdPosition}/>
+                <Bird id="flappy-bird" height={BIRD_HEIGHT} width={BIRD_WIDTH} top={birdPosition}/>
                 <span> {score} </span>
             </GameBox>
         </Div>
@@ -107,11 +110,10 @@ export default FlappyBird
 
 const Bird = styled.div`
     position: absolute;
-    background-color: red;
-    height: ${(props) => props.size}px;
-    width: ${(props) => props.size}px;
+    height: ${(props) => props.height}px;
+    width: ${(props) => props.width}px;
     top: ${(props) => props.top}px;
-    border-radius: 50%;
+    border: 1px red solid
 `;
 
 const Div = styled.div`
@@ -129,7 +131,6 @@ justify-content: center;
 const GameBox = styled.div`
     height: ${(props) => props.height}px;
     width: ${(props) => props.width}px;
-    background-color: blue;
     overflow: hidden;
 `;
 
@@ -139,5 +140,5 @@ const Obstacle = styled.div`
     width: ${(props) => props.width}px;
     height: ${(props) => props.height}px;
     left: ${(props) => props.left}px;
-    background-color: green;
+    border: 1px red solid
 `;
