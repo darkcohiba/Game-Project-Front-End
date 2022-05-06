@@ -63,7 +63,7 @@ function FlappyBird() {
             (hasCollidedWithTopObstacle || hasCollidedWithBottomObstacle)
             ) {
                 setGameHasStarted(false)
-                alert(`thank you for playing, your score is ${score}`)
+                alert(`Thank you for playing, your score is ${score}!`)
                 setScore(-2);
             }
     }, [birdPosition, obstacleHeight, bottomObstacleHeight, obstacleLeft]);
@@ -80,9 +80,10 @@ function FlappyBird() {
         }    
     };
 
+
     return (
         <Div >
-            <GameBox height={GAME_HEIGHT} width={GAME_WIDTH} onClick={handleClick}>
+            <GameBox tabIndex="0" height={GAME_HEIGHT} width={GAME_WIDTH} onClick={handleClick} onKeyDown={handleClick}>
                 <Obstacle
                     top={0}
                     width={OBSTACLE_WIDTH}
