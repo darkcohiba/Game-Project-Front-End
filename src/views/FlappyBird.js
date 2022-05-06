@@ -15,7 +15,7 @@ function FlappyBird() {
     const [gameHasStarted, setGameHasStarted] = useState(false);
     const [obstacleHeight, setObstacleHeight] = useState(100);
     const [obstacleLeft, setObstacleLeft] = useState(GAME_WIDTH - OBSTACLE_WIDTH);
-    const [score, setScore] = useState(0);
+    const [score, setScore] = useState(-2);
 
     const bottomObstacleHeight = GAME_HEIGHT - OBSTACLE_GAP - obstacleHeight
 
@@ -43,11 +43,12 @@ function FlappyBird() {
                 clearInterval(obstacleId);
             };
         }else{
+            setScore((score) => score + 1)
             setObstacleLeft(GAME_WIDTH - OBSTACLE_WIDTH);
             setObstacleHeight(
                 Math.floor(Math.random() * (GAME_HEIGHT - OBSTACLE_GAP))
             );
-            setScore((score) => score + 1)
+            
         }
     }, [gameHasStarted, obstacleLeft]);
 
@@ -61,7 +62,9 @@ function FlappyBird() {
             obstacleLeft <= OBSTACLE_WIDTH && 
             (hasCollidedWithTopObstacle || hasCollidedWithBottomObstacle)
             ) {
-                setGameHasStarted(false);
+                setGameHasStarted(false)
+                alert(`thank you for playing, your score is ${score}`)
+                setScore(-2);
             }
     }, [birdPosition, obstacleHeight, bottomObstacleHeight, obstacleLeft]);
 
@@ -78,8 +81,8 @@ function FlappyBird() {
     };
 
     return (
-        <Div onClick={handleClick}>
-            <GameBox height={GAME_HEIGHT} width={GAME_WIDTH}>
+        <Div >
+            <GameBox height={GAME_HEIGHT} width={GAME_WIDTH} onClick={handleClick}>
                 <Obstacle
                     top={0}
                     width={OBSTACLE_WIDTH}
