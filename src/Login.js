@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
 
 function Login({setUser,setIsAuthenticated}) {
-  const [username, setUsername] = useState('')
+  const [username, setUserName] = useState('')
   const [password, setPassword] = useState('')
  
   const [error, setError] = useState([])
@@ -31,6 +31,8 @@ function Login({setUser,setIsAuthenticated}) {
         } else {
           res.json()
           .then(json => setError(json.error))
+          alert("Please enter a valid username and password")
+          window.location.replace("http://localhost:3000/Snake")
         }
       })
   }
@@ -42,7 +44,7 @@ function Login({setUser,setIsAuthenticated}) {
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
           <p className="mt-2 text-center text-sm text-gray-600">
             Or{' '}
-            <a href="/CreateAUser" className="font-medium text-indigo-600 hover:text-indigo-500">
+            <a href="/CreateAUser" className="font-medium text-pink-500 hover:text-pink-700" title="Create a">
               create an account here!
             </a>
           </p>
@@ -51,17 +53,17 @@ function Login({setUser,setIsAuthenticated}) {
           <input type="hidden" name="remember" defaultValue="true" />
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
-              <label htmlFor="email-address" className="sr-only">
-                Email address
+              <label htmlFor="user-name" className="sr-only">
+                User name
               </label>
               <input
-                id="email-address"
-                name="email"
-                type="email"
-                autoComplete="email"
+                id="user-name"
+                name="username"
+                type="username"
                 required
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Email address"
+                placeholder="User Name"
+                onChange={(event) =>setUserName(event.target.value)}
               />
             </div>
             <div>
@@ -75,12 +77,13 @@ function Login({setUser,setIsAuthenticated}) {
                 required
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Password"
+                onChange={(event) =>setPassword(event.target.value)}
               />
             </div>
           </div>
           <div>
             <div className="text-sm">
-              <a href="/CreateAUser" className="font-medium text-indigo-600 hover:text-indigo-500">
+              <a href="/CreateAUser" className="font-medium text-pink-500 hover:text-pink-700">
                 Forgot your password?...create a new account!
               </a>
             </div>
@@ -88,7 +91,7 @@ function Login({setUser,setIsAuthenticated}) {
           <div>
             <button
               type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={onSubmit}>
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-pink-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={onSubmit}>
               <span className="absolute left-0 inset-y-0 flex items-center pl-3">
               </span>
               Sign in
