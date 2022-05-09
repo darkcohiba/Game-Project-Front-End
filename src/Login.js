@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import Auth from './Auth'
+import {Link} from 'react-router-dom'
 
 function Login({setUser,setIsAuthenticated}) {
   const [username, setUsername] = useState('')
@@ -25,6 +25,7 @@ function Login({setUser,setIsAuthenticated}) {
           .then(user=>{
             setUser(user)
             setIsAuthenticated(true)
+            window.location.replace("http://localhost:3000/Home")
           })
           
         } else {
@@ -34,26 +35,17 @@ function Login({setUser,setIsAuthenticated}) {
       })
   }
   return (
-    
       <> 
-      <h1>Login</h1>
-      <form onSubmit={onSubmit}>
-      <label>
-        Username
- 
-        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-      </label>
-      <label>
-       Password
-  
-      <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      </label>
-     
-      <input type="submit" value="Login!" />
-    </form>
+      
+      <form className="flex justify-center"onSubmit={onSubmit}>
+        <h1>Login</h1>
+        <label>Username<input className="border-2 w-100 h-10 bg-slate-400" type="text" value={username} onChange={(e) => setUsername(e.target.value)} /></label>
+        <label>Password<input type="password" className="border-2 w-100 h-10 bg-slate-400" value={password} onChange={(e) => setPassword(e.target.value)} /></label>
+        <button type="submit" value="Login!" className="bg-teal-200 w-100 h-10 border-2">Login!</button>
+      </form>
     {error?<div>{error}</div>:null}
-    <Auth setUser={setUser} setIsAuthenticated={setUser}/>
-      </>
+    <Link to="/CreateAUser" > Sign up Here!</Link>
+    </>
   )
 }
 
