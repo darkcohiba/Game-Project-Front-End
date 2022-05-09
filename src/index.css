@@ -58,9 +58,11 @@
 }; 
 
 /* Home Page Images */
-#flappy-bird-game-bg {
-    background-image: url('./assets/flappy-bird-sample.png')
-};
+/* #flappy-bird-game-bg {
+    background-image: url('./assets/flappy-bird-sample.png');
+    height: 200px;
+    width: 200px;
+}; */
 
 #snake-game-bg {
 
