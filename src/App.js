@@ -13,9 +13,6 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [errors, setErrors] = useState(false)
   const [user, setUser] = useState(null);
-
-
-
   return (
     <div>
       <Router>
