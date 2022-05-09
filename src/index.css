@@ -56,3 +56,12 @@
     text-align: center;
     margin-top: 60px;
 }; 
+
+/* Home Page Images */
+#flappy-bird-game-bg {
+    background-image: url('./assets/flappy-bird-sample.png')
+};
+
+#snake-game-bg {
+
+};
