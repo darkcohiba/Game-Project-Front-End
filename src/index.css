@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .doodle {
     width: 400px;
     height: 600px;
