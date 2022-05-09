@@ -1,18 +1,19 @@
 import Header from './Header';
-
+import FlappyBirdSample from './assets/flappy-bird-sample.png'
+import SnakeGameSample from './assets/snake-game-sample.png'
 
 export default function Homepage() {
     return(
         <>
             <Header/>
-            <div className="grid grid-cols-2 grid-rows-2 gap-4">
-                <div id="snake-game-bg">
-                    <img src='*' alt='Snake Game' />
+            <div className="grid grid-cols-2 grid-rows-2 gap-4 text-center">
+                <div>
+                    <img src={SnakeGameSample} id="snake-game-bg" alt='Snake Game'/>
                 </div>
                 <div>
-                    <img src="./assets/flappy-bird-sample.png" alt='Flappy Bird Game' />
+                    <img className="hover:scale-25" id="flappy-bird-sample-bg" src={FlappyBirdSample} alt='Flappy Bird Game'/>
                 </div>
-                <div className='text-center'>
+                <div>
                     <h1 className='text-2xl font-bold'>Snake Instructions</h1>
                     <br/>
                     <h2 className='text-xl font-semibold'>Objective</h2>
@@ -25,7 +26,7 @@ export default function Homepage() {
                     <p>D - Right</p>
                     
                 </div>
-                <div className='text-center'>
+                <div>
                     <h1 className='text-2xl font-bold'>Flappy Bird Instructions</h1>
                     <br/>
                     <h2 className='text-xl font-semibold'>Objective</h2>
@@ -34,7 +35,6 @@ export default function Homepage() {
                     <h2 className='text-xl font-semibold'>Controls</h2>
                     <p>Space/Left Click - Fly up</p>
                 </div>
-                hope this works
             </div>
         </>
     )

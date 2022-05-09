@@ -34,7 +34,7 @@
 
 #game-box {
     background-image: url('./assets/fb-game-background.png');
-    margin: 0px
+    margin: 0px;
 }
 
 #obstacle {
@@ -43,7 +43,7 @@
 
 #obstacle-up {
     background-image: url('./assets/flappybird-pipe.png');
-    transform: scaleY(-1)
+    transform: scaleY(-1);
 }
 
 #bottom-box{
@@ -55,15 +55,19 @@
     font-weight: bold;
     text-align: center;
     margin-top: 60px;
-}; 
+}
 
 /* Home Page Images */
-/* #flappy-bird-game-bg {
-    background-image: url('./assets/flappy-bird-sample.png');
-    height: 200px;
-    width: 200px;
-}; */
+.flappy-bird-image{
+    text-align:center;
+}
+
+#flappy-bird-sample-bg {
+    height: 300px;
+    width: 300px;
+}
 
 #snake-game-bg {
-
-};
+    height: 300px;
+    width: 300px;
+}
