@@ -25,14 +25,14 @@ function Login({setUser,setIsAuthenticated}) {
           .then(user=>{
             setUser(user)
             setIsAuthenticated(true)
-            window.location.replace("http://localhost:3000/Home")
+            window.location.replace("http://localhost:9000/Home")
           })
           
         } else {
           res.json()
           .then(json => setError(json.error))
           alert("Please enter a valid username and password")
-          window.location.replace("http://localhost:3000/Snake")
+          window.location.replace("http://localhost:9000/Snake")
         }
       })
   }
