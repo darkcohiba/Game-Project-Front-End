@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react"
+import Header from "../Header.js"
 
 const BOTTOM_HEIGHT = 150;
-const BIRD_HEIGHT = 46;
+const BIRD_HEIGHT = 45;
 const BIRD_WIDTH = 60;
 const GAME_WIDTH = 500;
 const GAME_HEIGHT = 500;
@@ -91,6 +92,8 @@ function FlappyBird() {
 
     //Render Game
     return (
+        <>
+        <Header/>
         <Div>
             <GameBox tabIndex="0" id="game-box" height={GAME_HEIGHT} width={GAME_WIDTH} onClick={handleClick} onKeyDown={handleClick}>
                 <Obstacle
@@ -119,33 +122,35 @@ function FlappyBird() {
                 </p>
             </BottomBox>
         </Div>
+        </>
     );
 }
 
 export default FlappyBird
 
 //Style Game
+const Div = styled.div`
+    height: ${(props) => props.height}px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    position: relative;
+    top: 10px;
+`;
+
 const Bird = styled.div`
     position: absolute;
     height: ${(props) => props.height}px;
     width: ${(props) => props.width}px;
     top: ${(props) => props.top}px;
-    border: 1px red solid;
     radius: 10%
-`;
-
-const Div = styled.div`
-    height: ${(props) => props.height}px;
-    display: flex:
-    width: 100%;
-    justify-content: center;
 `;
 
 const GameBox = styled.div`
     height: ${(props) => props.height}px;
     width: ${(props) => props.width}px;
     overflow: hidden;
-    border: 1px solid black
+    // border: 1px solid black
 `;
 
 const Obstacle = styled.div`
@@ -157,7 +162,9 @@ const Obstacle = styled.div`
 `;
 
 const BottomBox = styled.div`
+    position: absolute;
     height: ${(props) => props.height}px;
     width: ${(props) => props.width}px;
-    border: 1px solid black
+    // border: 1px solid black;
+    top: 500px;
 `;
