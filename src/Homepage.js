@@ -1,12 +1,16 @@
+import Header from './Header';
+
 export default function Homepage() {
     return(
         <>
             <Header/>
             <div className="flex">
                 <div id="snake-game-bg">
+                    <p>div</p>
 
                 </div>
                 <div id="flappy-bird-game-bg">
+                    <p>div</p>
 
                 </div>
                 <div>

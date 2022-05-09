@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Auth from './Auth';
 import HomePage from './Homepage';
 import Rules from './Rules';
@@ -27,19 +27,20 @@ function App() {
     });
   },[]);
 
-  if (!isAuthenticated) return <Login error={'please login'} setIsAuthenticated={setIsAuthenticated} setUser={setUser} />;
 
 
   return (
     <div>
       <Router>
+      <Routes>
       <Route path= "/"  element = {<Login setIsAuthenticated={setIsAuthenticated} setUser={setUser}/>} />
       <Route path= "/CreateAUser"  element = {<Auth setIsAuthenticated={setIsAuthenticated} setUser={setUser} setErrors={setErrors}/>} />
-      <Route path= "/home"  element = {<HomePage/>} />
+      <Route path= "/Home"  element = {<HomePage/>} />
       <Route path="/Snake" element = {<SnakeGame/>}/>
       {/* <Route path="/DoodleJump" element = {<Submission/>}/> */}
       <Route path="/FlappyBird" element = {<FlappyBird/>}/>
-      <Route path="/rules" element = {<Rules/>}/>
+      <Route path="/Rules" element = {<Rules/>}/>
+      </Routes>
       </Router>
     </div>
   )
