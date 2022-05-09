@@ -5,7 +5,7 @@ const BOTTOM_HEIGHT = 150;
 const BIRD_HEIGHT = 46;
 const BIRD_WIDTH = 60;
 const GAME_WIDTH = 500;
-const GAME_HEIGHT = 580;
+const GAME_HEIGHT = 500;
 const GRAVITY = 6;
 const JUMP_HEIGHT = 100;
 const OBSTACLE_WIDTH = 62;
@@ -34,6 +34,8 @@ function FlappyBird() {
         };
     }, [birdPosition, gameHasStarted]);
     
+
+    //Render Obstacle
     useEffect(() => {
         let obstacleId;
         if(gameHasStarted && obstacleLeft >= -OBSTACLE_WIDTH) {
@@ -54,19 +56,20 @@ function FlappyBird() {
         }
     }, [gameHasStarted, obstacleLeft]);
 
+
+    //Create Hit-Detection
     useEffect(() => {
         const hasCollidedWithTopObstacle = 
             birdPosition >= 1 && birdPosition < obstacleHeight;
         const hasCollidedWithBottomObstacle = 
-            birdPosition <= 580 && birdPosition > 580 - bottomObstacleHeight;
+            birdPosition <= GAME_HEIGHT && birdPosition > GAME_HEIGHT - bottomObstacleHeight;
         const hasCollidedWithBottom = 
-            birdPosition > 535;
+            birdPosition > GAME_HEIGHT - BIRD_HEIGHT;
 
-        if (hasCollidedWithBottom ||  obstacleLeft >= 0 && 
+        if (hasCollidedWithBottom || obstacleLeft >= 0 && 
             obstacleLeft <= OBSTACLE_WIDTH && 
             (hasCollidedWithTopObstacle || hasCollidedWithBottomObstacle)
             ) {
-                console.log(birdPosition)
                 setGameHasStarted(false)
                 setBirdPosition(200)
                 alert(`Thank you for playing, your score is ${score}!`)
@@ -74,7 +77,7 @@ function FlappyBird() {
             }
     }, [obstacleHeight, bottomObstacleHeight, obstacleLeft]);
 
-
+    //Create Bird Jumping Action
     const handleClick = () => {
         let newBirdPosition = birdPosition - JUMP_HEIGHT;
         if (!gameHasStarted) {
@@ -86,7 +89,7 @@ function FlappyBird() {
         }    
     };
 
-
+    //Render Game
     return (
         <Div>
             <GameBox tabIndex="0" id="game-box" height={GAME_HEIGHT} width={GAME_WIDTH} onClick={handleClick} onKeyDown={handleClick}>
@@ -121,25 +124,28 @@ function FlappyBird() {
 
 export default FlappyBird
 
+//Style Game
 const Bird = styled.div`
     position: absolute;
     height: ${(props) => props.height}px;
     width: ${(props) => props.width}px;
     top: ${(props) => props.top}px;
     border: 1px red solid;
+    radius: 10%
 `;
 
 const Div = styled.div`
-height: ${(props) => props.height}px;
-display: flex:
-width: 100%;
-justify-content: center;
+    height: ${(props) => props.height}px;
+    display: flex:
+    width: 100%;
+    justify-content: center;
 `;
 
 const GameBox = styled.div`
     height: ${(props) => props.height}px;
     width: ${(props) => props.width}px;
     overflow: hidden;
+    border: 1px solid black
 `;
 
 const Obstacle = styled.div`
@@ -148,11 +154,10 @@ const Obstacle = styled.div`
     width: ${(props) => props.width}px;
     height: ${(props) => props.height}px;
     left: ${(props) => props.left}px;
-    border: 1px red solid
 `;
 
 const BottomBox = styled.div`
     height: ${(props) => props.height}px;
     width: ${(props) => props.width}px;
-    border: 1px red solid
+    border: 1px solid black
 `;

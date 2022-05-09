@@ -33,6 +33,7 @@
 
 #game-box {
     background-image: url('./assets/fb-game-background.png');
+    margin: 0px
 }
 
 #obstacle {
@@ -45,7 +46,7 @@
 }
 
 #bottom-box{
-    background-image: url('./assets/bottom-background.png')
+    background-image: url('./assets/bottom-background.png');
 }
 
 #flappy-bird-score {
