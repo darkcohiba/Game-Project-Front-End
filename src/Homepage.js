@@ -1,17 +1,23 @@
+import { useNavigate } from "react-router"
 import Header from './Header';
 import FlappyBirdSample from './assets/flappy-bird-sample.png'
 import SnakeGameSample from './assets/snake-game-sample.png'
 
 export default function Homepage() {
+
+    const navigate = useNavigate();
+
     return(
         <>
             <Header/>
             <div className="grid grid-cols-2 grid-rows-2 gap-4 text-center">
                 <div>
-                    <img src={SnakeGameSample} id="snake-game-bg" alt='Snake Game'/>
+                    <br/>
+                    <img onClick={() => navigate('/snake')} className="inline" src={SnakeGameSample} id="snake-game-bg" alt='Snake Game'/>
                 </div>
                 <div>
-                    <img className="hover:scale-25" id="flappy-bird-sample-bg" src={FlappyBirdSample} alt='Flappy Bird Game'/>
+                    <br/>
+                    <img onClick={() => navigate('/flappybird')} className="inline" id="flappy-bird-sample-bg" src={FlappyBirdSample} alt='Flappy Bird Game'/>
                 </div>
                 <div>
                     <h1 className='text-2xl font-bold'>Snake Instructions</h1>
