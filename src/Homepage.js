@@ -34,6 +34,7 @@ export default function Homepage() {
                     <h2 className='text-xl font-semibold'>Controls</h2>
                     <p>Space/Left Click - Fly up</p>
                 </div>
+                hope this works
             </div>
         </>
     )
