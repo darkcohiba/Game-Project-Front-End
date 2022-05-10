@@ -19,6 +19,7 @@ function FlappyBird(user) {
     const [obstacleHeight, setObstacleHeight] = useState(100);
     const [obstacleLeft, setObstacleLeft] = useState(GAME_WIDTH - OBSTACLE_WIDTH);
     const [score, setScore] = useState(-2);
+    const [gameData, setGameData] = useState([])
 
     const bottomObstacleHeight = GAME_HEIGHT - OBSTACLE_GAP - obstacleHeight
 
@@ -73,14 +74,14 @@ function FlappyBird(user) {
             ) {
                 const game = {
                     game: "Flappy Bird",
-                    user_id: "9",
                     score
                 }
                 fetch(`http://localhost:3000//games`,{
                     method:'POST',
                     headers:{'Content-Type': 'application/json'},
-                    body:JSON.stringify(game)
-                })
+                    body:JSON.stringify(game)})
+                    .then(response => response.json())
+                    .then((data) => console.log(data))
                 setGameHasStarted(false)
                 setBirdPosition(200)
                 alert(`Thank you for playing, your score is ${score}!`)

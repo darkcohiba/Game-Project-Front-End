@@ -26,22 +26,18 @@ export default function Highscores() {
                     Flappy Bird High Scores
                     <div className='col-span-2 flex justify-evenly text-lg font-normal'>
                         <ol>
-                        {snakeHighScores.map(item => 
-                        <li>{`${item.score} by ${item.users.name}`}</li>)}
+                        {flappyHighscores.map(item => 
+                        <li>{`${item.score} by ${item.users[0].name}`}</li>)}
                         </ol>
                     </div>
                 </div>
                 <div className='text-xl'>
                     Snake High Scores
                     <div className='col-span-2 flex justify-evenly text-lg font-normal'>
-                        <p>User
-                        <ul>
-                            <li> 1 </li>
-                            <li> 2 </li>
-                            <li> 3 </li>
-                            {/* <li>`${i}. ${user}: ${score}`</li> */}
-                        </ul>
-                        </p>
+                    <ol>
+                        {snakeHighScores.map(item => 
+                        <li>{`${item.score} by ${item.users[0].name}`}</li>)}
+                        </ol>
                     </div>
                 </div>
             </div>

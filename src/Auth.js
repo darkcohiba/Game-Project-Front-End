@@ -25,12 +25,11 @@ function Auth({setUser, setIsAuthenticated}) {
             .then(user=>{
               setUser(user)
               setIsAuthenticated(true)
-              window.location.replace("http://localhost:3000/Home")
+              window.location.replace("http://localhost:9000/Home")
             })
           } else {
             res.json()
             .then(json => setErrors(json.errors))
-            window.location.replace("http://localhost:3000/flappybird")
           }
         })
     }

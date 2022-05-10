@@ -2,28 +2,24 @@ import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
 
 function Login({setUser,setIsAuthenticated}) {
-  const [username, setUserName] = useState('')
+  const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
  
   const [error, setError] = useState([])
 
   function onSubmit(e){
       e.preventDefault()
-      const user = {
-          username: username,
-          password
-      }
-      console.log(user)     
-      fetch(`/login`,{
+      console.log(userName, password)     
+      fetch(`http://localhost:3000/login`,{
         method:'POST',
         headers:{'Content-Type': 'application/json'},
-        body:JSON.stringify(user)
+        body:JSON.stringify({userName, password})
       })
       .then(res => {
         if(res.ok){
           res.json()
-          .then(user=>{
-            setUser(user)
+          .then(data=>{
+            setUser(data)
             setIsAuthenticated(true)
             window.location.replace("http://localhost:9000/Home")
           })
@@ -32,7 +28,6 @@ function Login({setUser,setIsAuthenticated}) {
           res.json()
           .then(json => setError(json.error))
           alert("Please enter a valid username and password")
-          window.location.replace("http://localhost:9000/Snake")
         }
       })
   }
