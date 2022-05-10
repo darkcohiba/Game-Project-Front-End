@@ -23,7 +23,7 @@ function App() {
       <Route path= "/Home"  element = {<HomePage/>} />
       <Route path="/Snake" element = {<SnakeGame/>}/>
       {/* <Route path="/DoodleJump" element = {<Submission/>}/> */}
-      <Route path="/FlappyBird" element = {<FlappyBird/>}/>
+      <Route path="/FlappyBird" element = {<FlappyBird user={user}/>}/>
       <Route path="/Highscores" element = {<Highscore/>}/>
       </Routes>
       </Router>

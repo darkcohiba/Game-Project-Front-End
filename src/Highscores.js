@@ -10,9 +10,9 @@ export default function Highscores() {
         fetch(`http://localhost:3000/topflap`)
             .then((resp) => resp.json())
             .then((data) => setFlappyHighScores(data))
-        fetch(`http://localhost:3000/topsnake`)
-            .then((resp) => resp.json())
-            .then((data) => setSnakeHighScores(data))
+        // fetch(`http://localhost:3000/topsnake`)
+        //     .then((resp) => resp.json())
+        //     .then((data) => setSnakeHighScores(data))
     },[])
 
     // const snakeHighscores = snakedata
@@ -27,7 +27,7 @@ export default function Highscores() {
                     <div className='col-span-2 flex justify-evenly text-lg font-normal'>
                         <ol>
                         {flappyHighscores.map(item => 
-                        <li>{`${item.score} by ${item.users[0].name}`}</li>)}
+                        <li>{`${item.score} by ${item.user.username}`}</li>)}
                         </ol>
                     </div>
                 </div>
