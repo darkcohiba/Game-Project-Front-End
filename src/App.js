@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Auth from './Auth';
 import HomePage from './Homepage';
-import Rules from './Rules';
+// import Rules from './Rules';
 import Login from './Login';
 import Highscore from './Highscores';
 import SnakeGame from './views/SnakeGame';
@@ -24,7 +24,7 @@ function App() {
       <Route path="/Snake" element = {<SnakeGame/>}/>
       {/* <Route path="/DoodleJump" element = {<Submission/>}/> */}
       <Route path="/FlappyBird" element = {<FlappyBird/>}/>
-      <Route path="/Rules" element = {<Rules/>}/>
+      {/* <Route path="/Rules" element = {<Rules/>}/> */}
       <Route path="/Highscores" element = {<Highscore/>}/>
       </Routes>
       </Router>

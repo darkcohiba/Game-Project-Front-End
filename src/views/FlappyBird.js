@@ -71,6 +71,11 @@ function FlappyBird() {
             obstacleLeft <= OBSTACLE_WIDTH && 
             (hasCollidedWithTopObstacle || hasCollidedWithBottomObstacle)
             ) {
+                fetch(`/highscores`,{
+                    method:'POST',
+                    headers:{'Content-Type': 'application/json'},
+                    body:JSON.stringify(score)
+                })
                 setGameHasStarted(false)
                 setBirdPosition(200)
                 alert(`Thank you for playing, your score is ${score}!`)
