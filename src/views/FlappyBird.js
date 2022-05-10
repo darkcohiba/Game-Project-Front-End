@@ -12,7 +12,7 @@ const JUMP_HEIGHT = 100;
 const OBSTACLE_WIDTH = 62;
 const OBSTACLE_GAP = 200;
 
-function FlappyBird() {
+function FlappyBird(user) {
     
     const [birdPosition, setBirdPosition] = useState(200);
     const [gameHasStarted, setGameHasStarted] = useState(false);
@@ -71,10 +71,15 @@ function FlappyBird() {
             obstacleLeft <= OBSTACLE_WIDTH && 
             (hasCollidedWithTopObstacle || hasCollidedWithBottomObstacle)
             ) {
-                fetch(`/highscores`,{
+                const game = {
+                    game: "Flappy Bird",
+                    user_id: "9",
+                    score
+                }
+                fetch(`http://localhost:3000//games`,{
                     method:'POST',
                     headers:{'Content-Type': 'application/json'},
-                    body:JSON.stringify(score)
+                    body:JSON.stringify(game)
                 })
                 setGameHasStarted(false)
                 setBirdPosition(200)

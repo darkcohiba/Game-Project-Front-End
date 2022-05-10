@@ -24,7 +24,6 @@ function App() {
       <Route path="/Snake" element = {<SnakeGame/>}/>
       {/* <Route path="/DoodleJump" element = {<Submission/>}/> */}
       <Route path="/FlappyBird" element = {<FlappyBird/>}/>
-      {/* <Route path="/Rules" element = {<Rules/>}/> */}
       <Route path="/Highscores" element = {<Highscore/>}/>
       </Routes>
       </Router>
