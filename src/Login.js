@@ -1,33 +1,37 @@
 import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
+import Auth from './Auth'
 
 function Login({setUser,setIsAuthenticated}) {
-  const [userName, setUserName] = useState('')
+  const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
  
   const [error, setError] = useState([])
 
   function onSubmit(e){
       e.preventDefault()
-      console.log(userName, password)     
+      const user = {
+        username: username,
+        password
+      }   
+
       fetch(`http://localhost:3000/login`,{
         method:'POST',
         headers:{'Content-Type': 'application/json'},
-        body:JSON.stringify({userName, password})
+        body:JSON.stringify(user)
       })
       .then(res => {
         if(res.ok){
           res.json()
-          .then(data=>{
-            setUser(data)
+          .then(user=>{
+            setUser(user)
             setIsAuthenticated(true)
-            console.log(data)
           })
           
         } else {
           res.json()
           .then(json => setError(json.error))
-          alert("Please enter a valid username and password")
+          // alert("Please enter a valid username and password")
         }
       })
   }
@@ -45,7 +49,7 @@ function Login({setUser,setIsAuthenticated}) {
           </p>
         </div>
         <form className="mt-8 space-y-6">
-          <input type="hidden" name="remember" defaultValue="true" />
+          {/* <input type="hidden" name="remember" defaultValue="true" /> */}
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
               <label htmlFor="user-name" className="sr-only">
@@ -58,7 +62,7 @@ function Login({setUser,setIsAuthenticated}) {
                 required
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="User Name"
-                onChange={(event) =>setUserName(event.target.value)}
+                onChange={(event) =>setUsername(event.target.value)}
               />
             </div>
             <div>
@@ -93,6 +97,8 @@ function Login({setUser,setIsAuthenticated}) {
             </button>
           </div>
         </form>
+        {error?<div>{error}</div>:null}
+        <Auth setUser={setUser} setIsAuthenticated={setIsAuthenticated}/>
       </div>
     </div>
   )
