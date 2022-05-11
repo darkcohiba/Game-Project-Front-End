@@ -12,7 +12,7 @@ import FlappyBird from './views/FlappyBird';
 function App() {
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  // const [errors, setErrors] = useState(false)
+  const [errors, setErrors] = useState(false)
   const [user, setUser] = useState(null);
 
   useEffect(() => {
