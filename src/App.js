@@ -5,6 +5,7 @@ import HomePage from './Homepage';
 // import Rules from './Rules';
 import Login from './Login';
 import Highscore from './Highscores';
+import Header from './Header';
 import SnakeGame from './views/SnakeGame';
 import FlappyBird from './views/FlappyBird';
 
@@ -25,6 +26,7 @@ function App() {
       {/* <Route path="/DoodleJump" element = {<Submission/>}/> */}
       <Route path="/FlappyBird" element = {<FlappyBird user={user}/>}/>
       <Route path="/Highscores" element = {<Highscore/>}/>
+      <Route path="/Header" element = {<Header user={user} setIsAuthenticated={setIsAuthenticated} setUser={setUser}/>}/>
       </Routes>
       </Router>
     </div>
