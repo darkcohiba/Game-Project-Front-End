@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {useNavigate} from 'react-router-dom'
+// import {useNavigate} from 'react-router-dom'
 // import Auth from './Auth'
 
 
@@ -9,7 +9,6 @@ function Login({setUser,setIsAuthenticated}) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState([])
-  const navigate = useNavigate
   function onSubmit(e){
     
       e.preventDefault()
@@ -29,7 +28,6 @@ function Login({setUser,setIsAuthenticated}) {
           .then(user=>{
             setUser(user)
             setIsAuthenticated(true)
-            navigate("/")
           })
           
         } else {
@@ -52,7 +50,6 @@ function Login({setUser,setIsAuthenticated}) {
           </p>
         </div>
         <form className="mt-8 space-y-6">
-          {/* <input type="hidden" name="remember" defaultValue="true" /> */}
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
               <label htmlFor="user-name" className="sr-only">
@@ -101,7 +98,6 @@ function Login({setUser,setIsAuthenticated}) {
           </div>
         </form>
         {error?<div>{error}</div>:null}
-        {/* <Auth setUser={setUser} setIsAuthenticated={setIsAuthenticated}/> */}
       </div>
     </div>
   )

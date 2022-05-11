@@ -12,7 +12,6 @@ export default function Header({ user ,setUser,setIsAuthenticated}) {
             navigate("/")
             setIsAuthenticated(false)
             setUser(null)
-            console.log(user)
         })
     } 
 

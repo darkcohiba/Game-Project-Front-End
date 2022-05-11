@@ -1,11 +1,29 @@
+import { useEffect, useState } from "react";
+import Login from "./Login"
 import { useNavigate } from "react-router"
 import Header from './Header';
 import FlappyBirdSample from './assets/flappy-bird-sample.png'
 import SnakeGameSample from './assets/snake-game-sample.png'
 
-export default function Homepage() {
-
+export default function Homepage({setUser}) {
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        fetch('/CreateAUser')
+        .then((res) => {
+          if (res.ok) {
+            res.json()
+            .then((user) => {
+              setIsAuthenticated(true);
+              setUser(user);
+            });
+          }
+        });
+    
+      },[]);
+    
+      if (!isAuthenticated) return <Login error={'please login'} setIsAuthenticated={setIsAuthenticated} setUser={setUser} />
 
     return(
         <>
