@@ -1,11 +1,7 @@
 import React, {useState} from 'react'
-import HomePage from './Homepage';
 import {useNavigate} from 'react-router-dom'
-// import Auth from './Auth'
 
-
-
-function Login({isAuthenticated,setUser,setIsAuthenticated, user}) {
+function Login({isAuthenticated,setUser,setIsAuthenticated}) {
 
   const navigate = useNavigate();
   const [username, setUsername] = useState('')

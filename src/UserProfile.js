@@ -1,16 +1,21 @@
+import { useState } from "react"
+import Header from "./Header"
 
+export default function UserProfile ({setUser, setIsAuthenticated, user}) {
 
-export default function UserProfile ({isAuthenticated,setUser,setIsAuthenticated, user}) {
+    const [username, setUserName] = useState('')
+    const [errors, setErrors] = useState([])
 
     function onSubmit(e){
+
         e.preventDefault()
         const user = {
-            name: username,
+            username: username,
             // email,
             // password
         }
         fetch(`http://localhost:3000/users`,{
-          method:'PATCH',
+          method:'POST',
           headers:{'Content-Type': 'application/json'},
           body:JSON.stringify(user)
         })
@@ -30,34 +35,32 @@ export default function UserProfile ({isAuthenticated,setUser,setIsAuthenticated
 
     return(
         <>
+            <Header/>
             <div>
-                Welcome back, `${user}!`
+                <div className="text-xl font-bold">
+                    `Welcome back, ${user}!`
+                </div>
+                <div className="align-center justify-center">
+                    <form>
+                        <input
+                            id="userName"
+                            name="username"
+                            type="username"
+                            required
+                            className=""
+                            placeholder="User Name"
+                            onChange={(event) =>setUserName(event.target.value)}
+                        />
+                        <div className="bg-pink-500">
+                        <button
+                            type="submit"
+                            className="rounded-full bg-pink-100 hover:bg-pink-300 w-40 h-6" onClick={onSubmit}>
+                            Update Username
+                        </button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <form>
-                <div>
-                    <label htmlFor="user-name" className="sr-only">
-                        Email address
-                    </label>
-                    <input
-                        id="userName"
-                        name="username"
-                        type="username"
-                        required
-                        className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                        placeholder="User Name"
-                        onChange={(event) =>setUserName(event.target.value)}
-                    />
-                </div>
-                <div>
-                <button
-                    type="submit"
-                    className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-pink-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={onSubmit}>
-                    <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-                    </span>
-                    Update Username
-                </button>
-                </div>
-            </form>
         </>
     )
 }
