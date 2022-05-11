@@ -15,25 +15,25 @@ function App() {
   const [errors, setErrors] = useState(false)
   const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    fetch('/CreateAUser')
-    .then((res) => {
-      if (res.ok) {
-        res.json()
-        .then((user) => {
-          setIsAuthenticated(true);
-          setUser(user);
-        });
-      }
-    });
+  // useEffect(() => {
+  //   fetch('/CreateAUser')
+  //   .then((res) => {
+  //     if (res.ok) {
+  //       res.json()
+  //       .then((user) => {
+  //         setIsAuthenticated(true);
+  //         setUser(user);
+  //       });
+  //     }
+  //   });
 
-  },[]);
+  // },[]);
 
-  if (!isAuthenticated) return <Login error={'please login'} setIsAuthenticated={setIsAuthenticated} setUser={setUser} />
+  // if (!isAuthenticated) return <Login error={'please login'} setIsAuthenticated={setIsAuthenticated} setUser={setUser} />
 
   return (
     <div>
-      <Router setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}>
+      <Router isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}>
         <Routes>
           <Route path= "/"  element = {<Login/>} />
           <Route path= "/CreateAUser"  element = {<Auth setErrors={setErrors}/>} />

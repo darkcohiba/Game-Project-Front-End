@@ -1,11 +1,13 @@
 import React, {useState} from 'react'
-// import {useNavigate} from 'react-router-dom'
+import HomePage from './Homepage';
+import {useNavigate} from 'react-router-dom'
 // import Auth from './Auth'
 
 
 
-function Login({setUser,setIsAuthenticated}) {
+function Login({isAuthenticated,setUser,setIsAuthenticated}) {
 
+  const navigate = useNavigate();
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState([])
@@ -26,8 +28,11 @@ function Login({setUser,setIsAuthenticated}) {
         if(res.ok){
           res.json()
           .then(user=>{
-            setUser(user)
-            setIsAuthenticated(true)
+            // setUser(user)
+            // setIsAuthenticated(true)
+            console.log(isAuthenticated)
+            window.location.replace("http://localhost:9000/Home")
+            console.log("working?")
           })
           
         } else {

@@ -23,7 +23,7 @@ export default function Homepage({setUser}) {
     
       },[]);
     
-      if (!isAuthenticated) return <Login error={'please login'} setIsAuthenticated={setIsAuthenticated} setUser={setUser} />
+    //   if (!isAuthenticated) return <Login error={'please login'} setIsAuthenticated={setIsAuthenticated} setUser={setUser} />
 
     return(
         <>
