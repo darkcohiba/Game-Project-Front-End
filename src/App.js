@@ -23,11 +23,11 @@ function App() {
           <Route path= "/"  element = {<Login isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/>} />
           <Route path= "/CreateAUser"  element = {<Auth isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user} setErrors={setErrors}/>} />
           <Route path= "/Home"  element = {<HomePage isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/>}/>
-          <Route path="/Snake" element = {<SnakeGame/>}/>
-          <Route path="/FlappyBird" element = {<FlappyBird/>}/>
-          <Route path="/Highscores" element = {<Highscore/>}/>
           <Route path="/Header" element = {<Header isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/>}/>
           <Route path="/Profile" element = {<UserProfile isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/>}/>
+          <Route path="/Snake" element = {<SnakeGame isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/>}/>
+          <Route path="/FlappyBird" element = {<FlappyBird isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/>}/>
+          <Route path="/Highscores" element = {<Highscore isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/>}/>
         </Routes>
       </Router>
     </div>
