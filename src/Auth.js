@@ -14,7 +14,7 @@ function Auth({setUser, setIsAuthenticated}) {
             email,
             password
         }
-        fetch(`/users`,{
+        fetch(`http://localhost:3000/users`,{
           method:'POST',
           headers:{'Content-Type': 'application/json'},
           body:JSON.stringify(user)
@@ -25,7 +25,6 @@ function Auth({setUser, setIsAuthenticated}) {
             .then(user=>{
               setUser(user)
               setIsAuthenticated(true)
-              // window.location.replace("http://localhost:9000/Home")
             })
           } else {
             res.json()

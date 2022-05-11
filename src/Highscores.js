@@ -2,7 +2,7 @@ import Header from './Header';
 import React, {useState, useEffect} from 'react';
 
 
-export default function Highscores() {
+export default function Highscores({isAuthenticated,setUser,setIsAuthenticated}) {
     const [flappyHighscores, setFlappyHighScores] = useState([])
     const [snakeHighScores, setSnakeHighScores] = useState([]) 
 
@@ -10,17 +10,15 @@ export default function Highscores() {
         fetch(`http://localhost:3000/topflap`)
             .then((resp) => resp.json())
             .then((data) => setFlappyHighScores(data))
-        // fetch(`http://localhost:3000/topsnake`)
-        //     .then((resp) => resp.json())
-        //     .then((data) => setSnakeHighScores(data))
-    },[])
+        fetch(`http://localhost:3000/topsnake`)
+            .then((resp) => resp.json())
+            .then((data) => setSnakeHighScores(data))
+        },[])
 
-    // const snakeHighscores = snakedata
-    // const flappyBirdHighscores = flappydata
 
     return(
         <>
-            <Header/>
+            <Header />
             <div className='col-span-2 flex justify-evenly font-semibold text-center'>
                 <div className='text-xl'>
                     Flappy Bird High Scores
@@ -34,9 +32,9 @@ export default function Highscores() {
                 <div className='text-xl'>
                     Snake High Scores
                     <div className='col-span-2 flex justify-evenly text-lg font-normal'>
-                    <ol>
+                        <ol>
                         {snakeHighScores.map(item => 
-                        <li>{`${item.score} by ${item.users[0].name}`}</li>)}
+                        <li>{`${item.score} by ${item.user.username}`}</li>)}
                         </ol>
                     </div>
                 </div>

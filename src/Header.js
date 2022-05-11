@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router"
 
-export default function Header({ user ,setUser,setIsAuthenticated}) {
+export default function Header({isAuthenticated,setUser,setIsAuthenticated, user}) {
 
     const navigate = useNavigate();
 
@@ -8,10 +8,12 @@ export default function Header({ user ,setUser,setIsAuthenticated}) {
         fetch('http://localhost:3000/logout',{
             method:'DELETE'
         })
+        console.log(user)
         .then(()=>{
             navigate("/")
             setIsAuthenticated(false)
             setUser(null)
+            window.location.replace("http://localhost:9000/")
         })
     } 
 

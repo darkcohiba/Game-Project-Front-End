@@ -5,7 +5,7 @@ import {useNavigate} from 'react-router-dom'
 
 
 
-function Login({isAuthenticated,setUser,setIsAuthenticated}) {
+function Login({isAuthenticated,setUser,setIsAuthenticated, user}) {
 
   const navigate = useNavigate();
   const [username, setUsername] = useState('')
@@ -28,12 +28,14 @@ function Login({isAuthenticated,setUser,setIsAuthenticated}) {
         if(res.ok){
           res.json()
           .then(user=>{
-            // setUser(user)
-            // setIsAuthenticated(true)
-            console.log(isAuthenticated)
-            window.location.replace("http://localhost:9000/Home")
+            setUser(user)
+            setIsAuthenticated(true)
+            // window.location.replace("http://localhost:9000/Home")
             console.log("working?")
+            navigate("/home")
           })
+          console.log(isAuthenticated)
+          console.log(user)
           
         } else {
           res.json()

@@ -5,8 +5,7 @@ import Header from './Header';
 import FlappyBirdSample from './assets/flappy-bird-sample.png'
 import SnakeGameSample from './assets/snake-game-sample.png'
 
-export default function Homepage({setUser}) {
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+export default function Homepage({ isAuthenticated,setUser,setIsAuthenticated, user}) {
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -27,7 +26,7 @@ export default function Homepage({setUser}) {
 
     return(
         <>
-            <Header/>
+            <Header />
             <div className="grid grid-cols-2 grid-rows-2 gap-4 text-center">
                 <div>
                     <br/>

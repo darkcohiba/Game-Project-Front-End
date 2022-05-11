@@ -33,15 +33,15 @@ function App() {
 
   return (
     <div>
-      <Router isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}>
+      <Router>
         <Routes>
-          <Route path= "/"  element = {<Login/>} />
-          <Route path= "/CreateAUser"  element = {<Auth setErrors={setErrors}/>} />
-          <Route path= "/Home"  element = {<HomePage/>}/>
+          <Route path= "/"  element = {<Login isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/>} />
+          <Route path= "/CreateAUser"  element = {<Auth isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user} setErrors={setErrors}/>} />
+          <Route path= "/Home"  element = {<HomePage isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/>}/>
           <Route path="/Snake" element = {<SnakeGame/>}/>
           <Route path="/FlappyBird" element = {<FlappyBird/>}/>
           <Route path="/Highscores" element = {<Highscore/>}/>
-          <Route path="/Header" element = {<Header />}/>
+          <Route path="/Header" element = {<Header isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/>}/>
         </Routes>
       </Router>
     </div>
