@@ -64,7 +64,7 @@ function Auth({setUser, setIsAuthenticated}) {
               </div>
               <div>
                 <label htmlFor="user-name" className="sr-only">
-                  Email address
+                  Username
                 </label>
                 <input
                   id="userName"

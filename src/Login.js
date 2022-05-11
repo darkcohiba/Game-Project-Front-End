@@ -30,7 +30,7 @@ function Login({isAuthenticated,setUser,setIsAuthenticated, user}) {
           .then(user=>{
             setUser(user)
             setIsAuthenticated(true)
-            // window.location.replace("http://localhost:9000/Home")
+            window.location.replace("http://localhost:9000/Home")
             console.log("working?")
             navigate("/home")
           })

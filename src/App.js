@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Auth from './Auth';
 import HomePage from './Homepage';
@@ -7,6 +7,7 @@ import Highscore from './Highscores';
 import Header from './Header';
 import SnakeGame from './views/SnakeGame';
 import FlappyBird from './views/FlappyBird';
+import UserProfile from './UserProfile';
 
 
 function App() {
@@ -14,22 +15,6 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [errors, setErrors] = useState(false)
   const [user, setUser] = useState(null);
-
-  // useEffect(() => {
-  //   fetch('/CreateAUser')
-  //   .then((res) => {
-  //     if (res.ok) {
-  //       res.json()
-  //       .then((user) => {
-  //         setIsAuthenticated(true);
-  //         setUser(user);
-  //       });
-  //     }
-  //   });
-
-  // },[]);
-
-  // if (!isAuthenticated) return <Login error={'please login'} setIsAuthenticated={setIsAuthenticated} setUser={setUser} />
 
   return (
     <div>
@@ -42,6 +27,7 @@ function App() {
           <Route path="/FlappyBird" element = {<FlappyBird/>}/>
           <Route path="/Highscores" element = {<Highscore/>}/>
           <Route path="/Header" element = {<Header isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/>}/>
+          <Route path="/Profile" element = {<UserProfile isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/>}/>
         </Routes>
       </Router>
     </div>
