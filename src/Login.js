@@ -1,14 +1,17 @@
 import React, {useState} from 'react'
-import {Link} from 'react-router-dom'
-import Auth from './Auth'
+import {useNavigate} from 'react-router-dom'
+// import Auth from './Auth'
+
+
 
 function Login({setUser,setIsAuthenticated}) {
+
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
- 
   const [error, setError] = useState([])
-
+  const navigate = useNavigate
   function onSubmit(e){
+    
       e.preventDefault()
       const user = {
         username: username,
@@ -26,12 +29,12 @@ function Login({setUser,setIsAuthenticated}) {
           .then(user=>{
             setUser(user)
             setIsAuthenticated(true)
+            navigate("/")
           })
           
         } else {
           res.json()
           .then(json => setError(json.error))
-          // alert("Please enter a valid username and password")
         }
       })
   }
@@ -98,7 +101,7 @@ function Login({setUser,setIsAuthenticated}) {
           </div>
         </form>
         {error?<div>{error}</div>:null}
-        <Auth setUser={setUser} setIsAuthenticated={setIsAuthenticated}/>
+        {/* <Auth setUser={setUser} setIsAuthenticated={setIsAuthenticated}/> */}
       </div>
     </div>
   )

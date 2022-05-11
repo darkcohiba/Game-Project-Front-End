@@ -9,7 +9,7 @@ export default function Header({ user ,setUser,setIsAuthenticated}) {
             method:'DELETE'
         })
         .then(()=>{
-            // navigate("/")
+            navigate("/")
             setIsAuthenticated(false)
             setUser(null)
             console.log(user)
