@@ -2,7 +2,7 @@ import Header from './Header';
 import React, {useState, useEffect} from 'react';
 
 
-export default function Highscores({isAuthenticated,setUser,setIsAuthenticated}) {
+export default function Highscores({user, isAuthenticated,setUser,setIsAuthenticated}) {
     const [flappyHighscores, setFlappyHighScores] = useState([])
     const [snakeHighScores, setSnakeHighScores] = useState([]) 
 
@@ -18,7 +18,7 @@ export default function Highscores({isAuthenticated,setUser,setIsAuthenticated})
 
     return(
         <>
-            <Header />
+            <Header isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/>
             <div className='col-span-2 flex justify-evenly font-semibold text-center'>
                 <div className='text-xl'>
                     Flappy Bird High Scores

@@ -8,7 +8,6 @@ export default function Header({isAuthenticated,setUser,setIsAuthenticated, user
         fetch('http://localhost:3000/logout',{
             method:'DELETE'
         })
-        console.log(user)
         .then(()=>{
             navigate("/")
             setIsAuthenticated(false)

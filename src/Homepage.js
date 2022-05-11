@@ -26,7 +26,7 @@ export default function Homepage({ isAuthenticated,setUser,setIsAuthenticated, u
 
     return(
         <>
-            <Header />
+            <Header isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/>
             <div className="grid grid-cols-2 grid-rows-2 gap-4 text-center">
                 <div>
                     <br/>
