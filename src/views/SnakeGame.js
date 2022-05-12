@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Snake from './snakeAssets/Snake';
 import Food from './snakeAssets/Food';
-import './snake.css';
+import './snakeAssets/snakegame.css';
 import Header from "../Header.js"
 
 
