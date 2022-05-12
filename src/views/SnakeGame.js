@@ -26,6 +26,10 @@ const initialState = {
 
 class SnakeGame extends Component {
 
+  constructor(user) {
+    super(user);
+  }
+
   state = initialState;
 
   componentDidMount() {
@@ -133,15 +137,15 @@ class SnakeGame extends Component {
     this.setState(initialState);
     const game = {
       game: "Snake",
-      user_id: user.user.id,
-      score: this.state.snakeDots.length,
-    }
-    fetch(`http://localhost:3000/games`,{
-        method:'POST',
-        headers:{'Content-Type': 'application/json'},
-        body:JSON.stringify(game)})
-        // .then(response => response.json())
-        // .then((data) => console.log(data))
+      // user_id: user.user.id,
+      score: this.state.snakeDots.length
+  }
+  fetch(`http://localhost:3000/games`,{
+      method:'POST',
+      headers:{'Content-Type': 'application/json'},
+      body:JSON.stringify(game)})
+      // .then(response => response.json())
+      // .then((data) => console.log(data))
   }
 
   render() {
