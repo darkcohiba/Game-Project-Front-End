@@ -21,6 +21,7 @@ export default function Homepage({ isAuthenticated,setUser,setIsAuthenticated, u
         });
     
       },[]);
+      console.log(user)
     
     //   if (!isAuthenticated) return <Login error={'please login'} setIsAuthenticated={setIsAuthenticated} setUser={setUser} />
 

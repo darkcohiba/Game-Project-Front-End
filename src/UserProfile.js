@@ -24,7 +24,7 @@ export default function UserProfile ({setUser, setIsAuthenticated, user}) {
             res.json()
             .then(user=>{
               setUser(user)
-              setIsAuthenticated(true)
+            //   setIsAuthenticated(true)
             })
           } else {
             res.json()
@@ -32,6 +32,7 @@ export default function UserProfile ({setUser, setIsAuthenticated, user}) {
           }
         })
     }
+    console.log(user)
 
     return(
         <>
