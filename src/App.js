@@ -12,10 +12,12 @@ import UserProfile from './UserProfile';
 
 function App() {
 
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [errors, setErrors] = useState(false)
-  const [user, setUser] = useState(null);
-
+  const [user, setUser] = useState(null)
+  console.log(`is user auth ${isAuthenticated}`)
+  console.log(`is user ${user}`)
+  // console.log(`is user ${user.username}, ${user.games[1].score}`)
   return (
     <div>
       <Router>
@@ -23,7 +25,6 @@ function App() {
           <Route path= "/"  element = {<Login isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/>} />
           <Route path= "/CreateAUser"  element = {<Auth isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user} setErrors={setErrors}/>} />
           <Route path= "/Home"  element = {<HomePage isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/>}/>
-          <Route path="/Header" element = {<Header isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/>}/>
           <Route path="/Profile" element = {<UserProfile isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/>}/>
           <Route path="/Snake" element = {<SnakeGame isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/>}/>
           <Route path="/FlappyBird" element = {<FlappyBird isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/>}/>

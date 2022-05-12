@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 
-function Login({isAuthenticated,setUser,setIsAuthenticated}) {
+function Login({isAuthenticated,setUser,setIsAuthenticated, user}) {
 
   const navigate = useNavigate();
   const [username, setUsername] = useState('')
@@ -10,7 +10,7 @@ function Login({isAuthenticated,setUser,setIsAuthenticated}) {
   function onSubmit(e){
     
       e.preventDefault()
-      const user = {
+      const currentUser = {
         username: username,
         password
       }   
@@ -18,7 +18,7 @@ function Login({isAuthenticated,setUser,setIsAuthenticated}) {
       fetch(`http://localhost:3000/login`,{
         method:'POST',
         headers:{'Content-Type': 'application/json'},
-        body:JSON.stringify(user)
+        body:JSON.stringify(currentUser)
       })
       .then(res => {
         if(res.ok){
@@ -29,8 +29,6 @@ function Login({isAuthenticated,setUser,setIsAuthenticated}) {
             console.log("working?")
             navigate("/home")
           })
-          console.log(isAuthenticated)
-          console.log(user)
           
         } else {
           res.json()
@@ -38,6 +36,9 @@ function Login({isAuthenticated,setUser,setIsAuthenticated}) {
         }
       })
   }
+
+  // console.log(`is user auth ${isAuthenticated}`)
+  // console.log(`is user ${user}`)
   return (
 
     <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">

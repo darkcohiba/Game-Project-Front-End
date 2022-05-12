@@ -5,26 +5,25 @@ export default function UserProfile ({setUser, setIsAuthenticated, user}) {
 
     const [username, setUserName] = useState('')
     const [errors, setErrors] = useState([])
+    
+    console.log(user)
 
     function onSubmit(e){
-
+        const id = user.id
         e.preventDefault()
-        const user = {
+        const newUserName = {
             username: username,
-            // email,
-            // password
         }
-        fetch(`http://localhost:3000/users`,{
-          method:'POST',
+        fetch(`http://localhost:3000/users/${id}`,{
+          method:'PATCH',
           headers:{'Content-Type': 'application/json'},
-          body:JSON.stringify(user)
+          body:JSON.stringify(newUserName)
         })
         .then(res => {
           if(res.ok){
             res.json()
             .then(user=>{
               setUser(user)
-            //   setIsAuthenticated(true)
             })
           } else {
             res.json()
@@ -32,14 +31,13 @@ export default function UserProfile ({setUser, setIsAuthenticated, user}) {
           }
         })
     }
-    console.log(user)
 
     return(
         <>
             <Header/>
             <div>
                 <div className="text-xl font-bold">
-                    `Welcome back, ${user}!`
+                    `Welcome back!`
                 </div>
                 <div className="align-center justify-center">
                     <form>
