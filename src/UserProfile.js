@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Header from "./Header"
 
-export default function UserProfile ({setUser, setIsAuthenticated, user}) {
+export default function UserProfile ({setUser, user}) {
 
     const [username, setUserName] = useState('')
     const [errors, setErrors] = useState([])
@@ -35,9 +35,9 @@ export default function UserProfile ({setUser, setIsAuthenticated, user}) {
     return(
         <>
             <Header/>
-            <div>
+            <div className="flex">
                 <div className="text-xl font-bold">
-                    `Welcome back!`
+                    `Welcome back, {user}!`
                 </div>
                 <div className="align-center justify-center">
                     <form>
