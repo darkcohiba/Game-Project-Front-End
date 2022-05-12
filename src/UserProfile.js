@@ -1,8 +1,9 @@
 import { useState } from "react"
 import Header from "./Header"
+import {useNavigate} from 'react-router-dom'
 
-export default function UserProfile ({setUser, user}) {
-
+export default function UserProfile ({isAuthenticated,setUser,setIsAuthenticated, user}) {
+    const navigate = useNavigate();
     const [username, setUserName] = useState('')
     const [errors, setErrors] = useState([])
     
@@ -32,6 +33,21 @@ export default function UserProfile ({setUser, user}) {
         })
     }
 
+    function onDelete(e){
+        const id = user.id
+        console.log(user.id)
+        e.preventDefault()
+        fetch(`http://localhost:3000/users/${id}`,{
+            method: "DELETE",
+        })
+        setUser(null)
+        setIsAuthenticated(false)
+        console.log("working?")
+        navigate("/")
+    }
+
+
+
     return(
         <>
             <Header/>
@@ -55,6 +71,11 @@ export default function UserProfile ({setUser, user}) {
                             type="submit"
                             className="rounded-full bg-pink-100 hover:bg-pink-300 w-40 h-6" onClick={onSubmit}>
                             Update Username
+                        </button>
+                        <button
+                            type="submit"
+                            className="rounded-full bg-pink-100 hover:bg-pink-300 w-40 h-6" onClick={onDelete}>
+                            Delete User Account
                         </button>
                         </div>
                     </form>
