@@ -7,6 +7,7 @@ import Highscore from './Highscores';
 import SnakeGame from './views/SnakeGame';
 import FlappyBird from './views/FlappyBird';
 import UserProfile from './UserProfile';
+import Protected from './Protected';
 // import Tetris from './views/TetrisGame';
 
 
@@ -24,10 +25,10 @@ function App() {
         <Routes>
           <Route path= "/"  element = {<Login isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/>} />
           <Route path= "/CreateAUser"  element = {<Auth isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user} setErrors={setErrors}/>} />
-          <Route path= "/Home"  element = {<HomePage isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/>}/>
-          <Route path="/Profile" element = {<UserProfile isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/>}/>
-          <Route path="/Snake" element = {<SnakeGame isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/>}/>
-          <Route path="/FlappyBird" element = {<FlappyBird isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/>}/>
+          <Route path= "/Home"  element = {<Protected isAuthenticated={isAuthenticated}><HomePage isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/></Protected>}/>
+          <Route path="/Profile" element = {<Protected isAuthenticated={isAuthenticated}><UserProfile isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/></Protected>}/>
+          <Route path="/Snake" element = {<Protected isAuthenticated={isAuthenticated}><SnakeGame isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/></Protected>}/>
+          <Route path="/FlappyBird" element = {<Protected isAuthenticated={isAuthenticated}><FlappyBird isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/></Protected>}/>
           <Route path="/Highscores" element = {<Highscore isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user}/>}/>
         </Routes>
       </Router>

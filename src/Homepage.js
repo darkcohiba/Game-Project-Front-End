@@ -60,6 +60,11 @@ export default function Homepage({ isAuthenticated,setUser,setIsAuthenticated, u
                     <p>Space/Left Click - Fly up</p>
                 </div>
             </div>
+                <button
+                className="rounded-full bg-pink-100 hover:bg-pink-300 w-28 h-6"
+                onClick={() => navigate("/")}>
+                Click to Login
+                </button>
         </>
     )
 }
