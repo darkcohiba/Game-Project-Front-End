@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
+import {useNavigate} from 'react-router-dom'
 
 function Auth({setUser, setIsAuthenticated}) {
+  const navigate = useNavigate();
     const [username, setUserName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -25,6 +27,7 @@ function Auth({setUser, setIsAuthenticated}) {
             .then(user=>{
               setUser(user)
               setIsAuthenticated(true)
+              navigate("/home")
             })
           } else {
             res.json()

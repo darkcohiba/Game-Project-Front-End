@@ -6,7 +6,7 @@ export default function UserProfile ({setUser, user}) {
     const [username, setUserName] = useState('')
     const [errors, setErrors] = useState([])
     
-    console.log(user)
+    console.log(`user= ${user.username}`)
 
     function onSubmit(e){
         const id = user.id
@@ -37,7 +37,7 @@ export default function UserProfile ({setUser, user}) {
             <Header/>
             <div className="flex">
                 <div className="text-xl font-bold">
-                    `Welcome back, {user}!`
+                    Welcome back {user.username}!
                 </div>
                 <div className="align-center justify-center">
                     <form>
