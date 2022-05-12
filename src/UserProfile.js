@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Header from "./Header"
 
-export default function UserProfile ({setUser, setIsAuthenticated, user}) {
+export default function UserProfile ({setUser, user}) {
 
     const [username, setUserName] = useState('')
     const [errors, setErrors] = useState([])
@@ -11,8 +11,6 @@ export default function UserProfile ({setUser, setIsAuthenticated, user}) {
         e.preventDefault()
         const user = {
             username: username,
-            // email,
-            // password
         }
         fetch(`http://localhost:3000/users`,{
           method:'POST',
@@ -24,7 +22,6 @@ export default function UserProfile ({setUser, setIsAuthenticated, user}) {
             res.json()
             .then(user=>{
               setUser(user)
-            //   setIsAuthenticated(true)
             })
           } else {
             res.json()
@@ -37,9 +34,9 @@ export default function UserProfile ({setUser, setIsAuthenticated, user}) {
     return(
         <>
             <Header/>
-            <div>
+            <div className="flex">
                 <div className="text-xl font-bold">
-                    `Welcome back, ${user}!`
+                    `Welcome back, {user}!`
                 </div>
                 <div className="align-center justify-center">
                     <form>
