@@ -19,6 +19,7 @@ function FlappyBird(user) {
     const [obstacleHeight, setObstacleHeight] = useState(100);
     const [obstacleLeft, setObstacleLeft] = useState(GAME_WIDTH - OBSTACLE_WIDTH);
     const [score, setScore] = useState(-2);
+    const [gameData, setGameData] = useState([])
 
     const bottomObstacleHeight = GAME_HEIGHT - OBSTACLE_GAP - obstacleHeight
 
@@ -161,6 +162,7 @@ const GameBox = styled.div`
     height: ${(props) => props.height}px;
     width: ${(props) => props.width}px;
     overflow: hidden;
+    // border: 1px solid black
 `;
 
 const Obstacle = styled.div`
@@ -175,5 +177,6 @@ const BottomBox = styled.div`
     position: absolute;
     height: ${(props) => props.height}px;
     width: ${(props) => props.width}px;
+    // border: 1px solid black;
     top: 500px;
 `;

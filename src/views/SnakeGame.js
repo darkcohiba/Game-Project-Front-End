@@ -26,8 +26,8 @@ const initialState = {
 
 class SnakeGame extends Component {
 
-  constructor(user) {
-    super(user);
+  constructor(props) {
+    super(props);
   }
 
   state = initialState;
@@ -137,7 +137,6 @@ class SnakeGame extends Component {
     this.setState(initialState);
     const game = {
       game: "Snake",
-      // user_id: user.user.id,
       score: this.state.snakeDots.length
   }
   fetch(`http://localhost:3000/games`,{
