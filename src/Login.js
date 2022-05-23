@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 
-function Login({isAuthenticated,setUser,setIsAuthenticated, user}) {
+function Login({setUser,setIsAuthenticated}) {
 
   const navigate = useNavigate();
   const [username, setUsername] = useState('')
@@ -37,8 +37,6 @@ function Login({isAuthenticated,setUser,setIsAuthenticated, user}) {
       })
   }
 
-  // console.log(`is user auth ${isAuthenticated}`)
-  // console.log(`is user ${user}`)
   return (
 
     <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
