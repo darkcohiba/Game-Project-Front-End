@@ -16,8 +16,8 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [errors, setErrors] = useState(false)
   const [user, setUser] = useState(null)
-  console.log(`is user auth ${isAuthenticated}`)
-  console.log(`is user ${user}`)
+  // console.log(`is user auth ${isAuthenticated}`)
+  // console.log(`is user ${user}`)
 
   return (
     <div>
